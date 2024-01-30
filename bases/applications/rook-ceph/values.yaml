@@ -1,0 +1,10 @@
+---
+rook-ceph:
+  hostpathRequiresPrivileged: true
+  pspEnable: false
+  csi:
+    enableRbdDriver: false
+    enableCephfsDriver: true
+    enableRBDSnapshotter: false
+  monitoring:
+    enabled: false
