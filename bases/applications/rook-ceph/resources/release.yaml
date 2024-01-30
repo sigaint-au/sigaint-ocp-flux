@@ -1,0 +1,26 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: rook-ceph
+  namespace: rook-ceph
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: rook-ceph
+      version: '1.13.3'
+      sourceRef:
+        kind: HelmRepository
+        name: rook-ceph
+        namespace: rook-ceph
+      interval: 1m
+  values:
+    rook-ceph:
+      hostpathRequiresPrivileged: true
+      pspEnable: false
+      csi:
+        enableRbdDriver: false
+        enableCephfsDriver: true
+        enableRBDSnapshotter: false
+      monitoring:
+        enabled: false
