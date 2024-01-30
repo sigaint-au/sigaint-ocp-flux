@@ -48,11 +48,11 @@ spec:
   values:
     rook-ceph-cluster:
       operatorNamespace: rook-ceph
-      ingress:
-        dashboard:
-          host:
-            name: ceph-dashboard.apps.ocp.sigaint.au
-            path: "/"
+    ingress:
+      dashboard:
+        host:
+          name: ceph-dashboard.apps.ocp.sigaint.au
+          path: "/"
 
       cephClusterSpec:
         monitoring:
