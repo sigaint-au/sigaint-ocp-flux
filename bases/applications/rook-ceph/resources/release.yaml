@@ -1,3 +1,4 @@
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -24,3 +25,101 @@ spec:
         enableRBDSnapshotter: false
       monitoring:
         enabled: false
+
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: rook-ceph-cluster
+  namespace: rook-ceph
+spec:
+  dependsOn:
+    - name: rook-ceph
+  interval: 5m
+  chart:
+    spec:
+      chart: rook-ceph-cluster
+      version: '1.13.3'
+      sourceRef:
+        kind: HelmRepository
+        name: rook-ceph
+        namespace: rook-ceph
+      interval: 1m
+  values:
+    rook-ceph-cluster:
+      operatorNamespace: rook-ceph
+      ingress:
+        dashboard:
+          host:
+            name: ceph-dashboard.apps.ocp.sigaint.au
+            path: "/"
+
+      cephClusterSpec:
+        monitoring:
+          createPrometheusRules: false
+          enabled: false
+        crashCollector:
+          disable: true
+        dashboard:
+          enabled: true
+          urlPrefix: /
+          port: 8080
+          ssl: false
+
+      resources:
+        cleanup:
+          limits:
+            cpu: 100m
+            memory: 1Gi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        crashcollector:
+          limits:
+            cpu: 100m
+            memory: 60Mi
+          requests:
+            cpu: 100m
+            memory: 60Mi
+        logcollector:
+          limits:
+            cpu: 100m
+            memory: 1Gi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        mgr:
+          limits:
+            cpu: 500m
+            memory: 1Gi
+          requests:
+            cpu: 100m
+            memory: 512Mi
+        mgr-sidecar:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 100m
+            memory: 40Mi
+        mon:
+          limits:
+            cpu: 2000m
+            memory: 2Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+        osd:
+          limits:
+            cpu: 500m
+            memory: 4Gi
+          requests:
+            cpu: 100m
+            memory: 4Gi
+        prepareosd:
+          limits:
+            cpu: 100m
+            memory: 200Mi
+          requests:
+            cpu: 100m
+            memory: 50Mi
