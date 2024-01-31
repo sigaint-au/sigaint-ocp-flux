@@ -3,7 +3,6 @@ kind: Kustomization
 
 resources:
   - resources/namespace.yaml
-#  - resources/ceph-csi.yaml
-#  - resources/ceph.yaml
   - resources/repository.yaml
   - resources/release.yaml
+  - resources/storageclass.yaml
