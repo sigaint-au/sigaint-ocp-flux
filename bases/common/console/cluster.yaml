@@ -1,4 +1,5 @@
 ---
+apiVersion: operator.openshift.io/v1
 kind: Console
 metadata:
   name: cluster
