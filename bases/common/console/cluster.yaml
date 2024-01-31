@@ -1,0 +1,13 @@
+---
+kind: Console
+metadata:
+  name: cluster
+spec:
+  customization:
+    customLogoFile:
+      key: console-custom-logo.png
+      name: console-custom-logo
+  route:
+    hostname: "console.apps.ocp.sigaint.au"
+    secret:
+      name: ""
