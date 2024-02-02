@@ -9,3 +9,7 @@ resources:
   # API Server
   - apiserver/api-certificate-tls.yaml
   - apiserver/cluster.yaml
+
+  # Ingress
+  - ingress/ingress-default-tls.yaml
+  - ingress/default.yaml
