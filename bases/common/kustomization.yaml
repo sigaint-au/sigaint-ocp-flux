@@ -2,5 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
+  # Console
   - console/logo.yaml
   - console/cluster.yaml
+
+  # API Server
+  - apiserver/api-certificate-tls.yaml
