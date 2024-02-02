@@ -8,3 +8,4 @@ resources:
 
   # API Server
   - apiserver/api-certificate-tls.yaml
+  - apiserver/cluster.yaml
