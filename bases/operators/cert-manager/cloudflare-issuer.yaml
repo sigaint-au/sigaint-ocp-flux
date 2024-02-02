@@ -12,7 +12,7 @@ spec:
     solvers:
       - dns01:
           cloudflare:
-            email: mark@hahl.id.au
+            email: m4487@sigaint.au
             apiTokenSecretRef:
               name: cloudflare-api-token
               key: api-token
@@ -30,7 +30,7 @@ spec:
     solvers:
       - dns01:
           cloudflare:
-            email: mark@hahl.id.au
+            email: m4487@sigaint.au
             apiTokenSecretRef:
               name: cloudflare-api-token
               key: api-token
