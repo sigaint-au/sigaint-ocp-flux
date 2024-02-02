@@ -5,4 +5,4 @@ resources:
   - namespace.yaml
   - subscription.yaml
   - operatorconfig.yaml
-  - dopper-secretstore.yaml
+  - doppler-secretstore.yaml
