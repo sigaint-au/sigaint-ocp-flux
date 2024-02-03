@@ -1,0 +1,32 @@
+apiVersion: config.openshift.io/v1
+kind: OAuth
+metadata:
+  annotations:
+    include.release.openshift.io/ibm-cloud-managed: 'true'
+    include.release.openshift.io/self-managed-high-availability: 'true'
+    include.release.openshift.io/single-node-developer: 'true'
+    release.openshift.io/create-only: 'true'
+  name: cluster
+spec:
+  identityProviders:
+    - mappingMethod: claim
+      name: openid
+      openID:
+        claims:
+          email:
+            - email
+          groups:
+            - groups
+          name:
+            - name
+          preferredUsername:
+            - preferred_username
+            - username
+        clientID: 252280137825976380@external
+        clientSecret:
+          name: openid-client-secret-x6zpx
+        extraScopes:
+          - profile
+          - email
+        issuer: 'https://auth.sigaint.au'
+      type: OpenID

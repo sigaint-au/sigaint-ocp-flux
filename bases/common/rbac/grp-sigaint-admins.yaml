@@ -1,0 +1,22 @@
+---
+kind: Group
+apiVersion: user.openshift.io/v1
+metadata:
+  name: grp-sigaint-admins
+users:
+  - mhahl
+  - dcass
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: sigaint-admins
+subjects:
+  - kind: Group
+    apiGroup: rbac.authorization.k8s.io
+    name: grp-sigaint-admins
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+
