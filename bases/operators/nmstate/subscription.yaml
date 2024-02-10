@@ -3,8 +3,8 @@ kind: Subscription
 metadata:
   name: kubernetes-nmstate-operator
 spec:
-  channel: stable
+  channel: alpha
   installPlanApproval: Automatic
   name: kubernetes-nmstate-operator
-  source: redhat-operators
+  source: community-operators
   sourceNamespace: openshift-marketplace
