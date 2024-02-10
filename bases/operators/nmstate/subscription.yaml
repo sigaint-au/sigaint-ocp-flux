@@ -7,4 +7,4 @@ spec:
   installPlanApproval: Automatic
   name: kubernetes-nmstate-operator
   source: redhat-operators
-  sourceNamespace: openshift-marketplacez
+  sourceNamespace: openshift-marketplace
