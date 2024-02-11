@@ -16,17 +16,17 @@ spec:
         namespace: sigaint-traccar
       interval: 1m
   values:
-    securityContext: {}
-    ingress:
-      enabled: true
-      extraAnnotations: {}
-      annotations: {}
-      hosts:
-        - host: traccar.apps.sigaint.au
-          paths:
-            - /
-      tls: []
-
+    traccar:
+      securityContext: {}
+      ingress:
+        enabled: true
+        extraAnnotations: {}
+        annotations: {}
+        hosts:
+          - host: traccar.apps.sigaint.au
+            paths:
+              - /
+        tls: []
     mysql:
       enabled: true
       containerSecurityContext:
