@@ -1,0 +1,49 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: traccar
+  namespace: sigaint-traccar
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: traccar
+      version: '1.8.0'
+      sourceRef:
+        kind: HelmRepository
+        name: sigaint-traccar
+        namespace: sigaint-traccar
+      interval: 1m
+  values:
+    securityContext: {}
+    ingress:
+      enabled: true
+      extraAnnotations: {}
+      annotations: {}
+      hosts:
+        - host: traccar.apps.sigaint.au
+          paths:
+            - /
+      tls: []
+
+    mysql:
+      enabled: true
+      containerSecurityContext:
+        enabled: false
+      podSecurityContext:
+        enabled: false
+      auth:
+        database: "traccar"
+        username: "traccar"
+        password: "traccar"
+      primary:
+        persistence:
+          enabled: true
+      secondary:
+        containerSecurityContext:
+          enabled: false
+        podSecurityContext:
+          enabled: false
+        persistence:
+          enabled: true
