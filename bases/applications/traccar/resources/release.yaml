@@ -17,6 +17,9 @@ spec:
   values:
     image:
       flavor: "alpine"
+    externalService:
+      type: ClusterIP
+      enabled: true
     securityContext:
     podSecurityContext:
     traccar:
